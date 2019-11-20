@@ -1,6 +1,6 @@
 # arcgis-node
 
-This sceript was made to made to automate the mapping of points into ArcGIS Online.
+This script was made to made to automate the mapping of points into ArcGIS Online.
 
 ## Requirements
 
