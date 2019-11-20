@@ -52,23 +52,23 @@ function token() {
   console.log(colors.green("Getting access token...")); // Show that the script is doing something and isn't stuck
   request.get( // Start a get request to get the access token
     {
-      url: url, // This is finding the url that we found defined in [Token url](https://github.com/Kalum1/arcgis-node/blob/master/README.md#token-url)
-      json: true,
+      url: url, // This is finding the url that we found defined in "Token URL"
+      json: true, // Setting the response as json instead of html
       headers: { "User-Agent": "request" }
     },
     (err, res, data) => {
       if (err) {
-        console.log("Error:", err);
+        console.log("Error:", err); // Check for errors
       } else if (res.statusCode !== 200) {
-        console.log("Status:", res.statusCode);
+        console.log("Status:", res.statusCode); // If the status code is **not** 200 run this
       } else {
-        console.log(
-          colors.blue("Access token acquired, generating ArcGIS url...")
-        );
-        let token = data.access_token;
-        update(token);
+        console.log(colors.blue("Access token acquired, generating ArcGIS url...")); // Let the user know that the script is generating the correct url
+        let token = data.access_token; // Define the access_token we got from the get request as "token"
+        update(token); // Run the function named update whilst passing in the token variable 
       }
     }
   );
 }
   ```
+  
+  
