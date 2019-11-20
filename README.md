@@ -76,10 +76,43 @@ function token() {
 In order to gain access to the page, we must have a valid access token. These access tokens are valid for 7200 seconds. This is not a lot of time so we regenerate a new token every time the script runs.
 
 We need to make the url into a variable:
-```
+```js
 let format = 'json';
 let updateURL = `https://services.../addFeatures?f=${format}&token=${token}&features=${JSON.stringify(features)}`;
 ```
+At the moment this link will not work because `features` will be undefined, to fix this we need to define features.
 
+## Define features
 
+We need to take the csv and turn it into a json format, to do this we will be using csvtojson as it is fast and reliable
 
+```js
+let csvFilePath = "data/SaltBins.csv" // This looks for SaltBins.csv in the /data folder
+
+csv()
+  .fromFile(csvFilePath)
+  .then(features => {
+    console.log(JSON.stringify(features)); // We run this to check if the parser has done it's job and parsed the csv to json correctly
+    let format = 'json';
+    let updateURL = `https://services.../addFeatures?f=${format}&token=${token}&features=${JSON.stringify(features)}`;
+    
+    request.post(
+    {
+      url: updateURL, // Gets the URL that we created for updating the service
+      json: true
+    },
+    (error, res, body) => {
+      if(error) {
+        console.error(error);
+        return; // Stop the script
+      }
+      console.log(colors.red(`statusCode: ${res.statusCode}`)); // view the status code of the request
+      console.log(body); // View the body code of the request
+    }
+    )
+  })
+```
+
+## Running
+
+This script will **NOT** work if we don't put `token()` at the very bottom, this is what kickstarts the script.
