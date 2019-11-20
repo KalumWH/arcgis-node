@@ -52,7 +52,7 @@ function token() {
   console.log(colors.green("Getting access token...")); // Show that the script is doing something and isn't stuck
   request.get( // Start a get request to get the access token
     {
-      url: url, // This is finding the url that we found defined in
+      url: url, // This is finding the url that we found defined in [Token url](https://github.com/Kalum1/arcgis-node/blob/master/README.md#token-url)
       json: true,
       headers: { "User-Agent": "request" }
     },
