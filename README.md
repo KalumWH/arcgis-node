@@ -71,4 +71,15 @@ function token() {
 }
   ```
   
-  
+## Using the access token
+
+In order to gain access to the page, we must have a valid access token. These access tokens are valid for 7200 seconds. This is not a lot of time so we regenerate a new token every time the script runs.
+
+We need to make the url into a variable:
+```
+let format = 'json';
+let updateURL = `https://services.../addFeatures?f=${format}&token=${token}&features=${JSON.stringify(features)}`;
+```
+
+
+
