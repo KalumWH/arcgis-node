@@ -38,7 +38,7 @@ function update(token) { // Start running the new function once the token has fi
       console.log(JSON.stringify(features)); // print the variable out so we know that it's working
       // Change replaces when I create the regex
       let format = "json"; // Define format that we want to response to be in
-      let updateURL = `https://services9.arcgis.com/2YYldcvahRdcVBRi/arcgis/rest/services/Salt_Bins/FeatureServer/0/addFeatures?f=${format}&token=${token}&features=${JSON.stringify(features)}`; // Generate the endpoint using the format (json), token and features (json output)
+      let updateURL = `https://services.../arcgis/rest/services/Salt_Bins/FeatureServer/0/addFeatures?f=${format}&token=${token}&features=${JSON.stringify(features)}`; // Generate the endpoint using the format (json), token and features (json output)
       request.post( // Start a get request
         {
           url: updateURL, // Define where the POST request should post to
